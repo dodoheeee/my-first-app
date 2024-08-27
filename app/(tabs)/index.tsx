@@ -1,66 +1,85 @@
-import {
-    Image,
-    StyleSheet,
-    Platform,
-    TextInput,
-    Button,
-    TouchableOpacity,
-    SwitchComponent,
-    Switch,
-} from "react-native";
+import { StyleSheet, View, Image, Text } from "react-native";
 
-import { HelloWave } from "@/components/HelloWave";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import React from "react";
+
+const Header = () => {
+    return <ThemedText></ThemedText>;
+};
+const MyProfile = () => {
+    return <ThemedText></ThemedText>;
+};
+
+const Division = () => {
+    return <ThemedText></ThemedText>;
+};
+
+const FriendSection = () => {
+    return <ThemedText></ThemedText>;
+};
+
+const FriendList = () => {
+    return (
+        <View style={styles.container}>
+            <Profile
+                uri={
+                    "https://i.namu.wiki/i/AatouDbVMi8h7PdA0OafnL1qJbabCR37p4x_sXo3YOGr_RJwAjo1x429j8MFesFyAJuARmJ0EoLfPG8-_ZWCu_D3NiR2jATDuP4WP2lGL5Y23E08hUAgSCza79mB_r4_OxDRQmCD4sCQQyY3htXgwg.webp"
+                }
+                name={"김민수"}
+                profileSize={50}
+            />
+            <Profile
+                uri={"https://file.osen.co.kr/article_thumb/2024/02/16/202402161226777866_65ced5ea683e5_320x.jpg"}
+                name={"신유"}
+                profileSize={50}
+            />
+            <Profile
+                uri={
+                    "https://i.namu.wiki/i/AatouDbVMi8h7PdA0OafnL1qJbabCR37p4x_sXo3YOGr_RJwAjo1x429j8MFesFyAJuARmJ0EoLfPG8-_ZWCu_D3NiR2jATDuP4WP2lGL5Y23E08hUAgSCza79mB_r4_OxDRQmCD4sCQQyY3htXgwg.webp"
+                }
+                name={"데이식스"}
+                profileSize={50}
+            />
+            <Profile
+                uri={"https://file.osen.co.kr/article_thumb/2024/02/16/202402161226777866_65ced5ea683e5_320x.jpg"}
+                name={"영케이"}
+                profileSize={50}
+            />
+            <Profile
+                uri={
+                    "https://i.namu.wiki/i/AatouDbVMi8h7PdA0OafnL1qJbabCR37p4x_sXo3YOGr_RJwAjo1x429j8MFesFyAJuARmJ0EoLfPG8-_ZWCu_D3NiR2jATDuP4WP2lGL5Y23E08hUAgSCza79mB_r4_OxDRQmCD4sCQQyY3htXgwg.webp"
+                }
+                name={"도희"}
+                profileSize={50}
+            />
+        </View>
+    );
+};
+
+const Profile = (props: any) => {
+    return (
+        <View style={{ flexDirection: "row" }}>
+            <Image
+                source={{ uri: props.uri }}
+                style={{
+                    width: props.profileSize,
+                    height: props.profileSize,
+                }}
+            />
+            <Text>{props.name}</Text>
+        </View>
+    );
+};
 
 export default function HomeScreen() {
     return (
-        <ParallaxScrollView
-            headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-            headerImage={<Image source={require("@/assets/images/youngk.jpeg")} style={styles.reactLogo} />}>
-            <ThemedView style={styles.titleContainer}>
-                <ThemedText style={styles.text} type="title">
-                    Welcome! Dohee 안녕 윤성아
-                </ThemedText>
-                <HelloWave />
-            </ThemedView>
-            <ThemedView style={styles.stepContainer}>
-                <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-                <ThemedText>
-                    Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes. Press{" "}
-                    <ThemedText type="defaultSemiBold">
-                        {Platform.select({ ios: "cmd + d", android: "cmd + m" })}
-                    </ThemedText>{" "}
-                    to open developer tools.
-                </ThemedText>
-            </ThemedView>
-            <ThemedView style={styles.stepContainer}>
-                <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-                <ThemedText>Tap the Explore tab to learn more about what's included in this starter app.</ThemedText>
-            </ThemedView>
-            <ThemedView style={styles.stepContainer}>
-                <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-                <ThemedText>
-                    When you're ready, run <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get
-                    a fresh <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{" "}
-                    <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
-                    <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-                </ThemedText>
-            </ThemedView>
-            <ThemedView style={styles.box}>
-                <TextInput style={styles.input} placeholder="입력 해주세요" placeholderTextColor={"#ddd"} />
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => {
-                        console.log("여기를 클릭하세요!");
-                    }}>
-                    <ThemedText style={styles.buttonText}>Go to Contact</ThemedText>
-                </TouchableOpacity>
-                <Switch style={styles.switch} value={false} />
-                <Switch style={styles.switch} value={true} />
-            </ThemedView>
-        </ParallaxScrollView>
+        <View style={styles.box}>
+            <Header />
+            <MyProfile />
+            <Division />
+            <FriendSection />
+            <FriendList />
+        </View>
     );
 }
 
@@ -69,6 +88,12 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         gap: 8,
+    },
+    container: {
+        flex: 1,
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
     },
     stepContainer: {
         gap: 8,
