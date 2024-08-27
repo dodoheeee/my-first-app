@@ -1,4 +1,13 @@
-import { Image, StyleSheet, Platform } from "react-native";
+import {
+    Image,
+    StyleSheet,
+    Platform,
+    TextInput,
+    Button,
+    TouchableOpacity,
+    SwitchComponent,
+    Switch,
+} from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
@@ -9,9 +18,11 @@ export default function HomeScreen() {
     return (
         <ParallaxScrollView
             headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-            headerImage={<Image source={require("@/assets/images/partial-react-logo.png")} style={styles.reactLogo} />}>
+            headerImage={<Image source={require("@/assets/images/youngk.jpeg")} style={styles.reactLogo} />}>
             <ThemedView style={styles.titleContainer}>
-                <ThemedText type="title">Welcome! Dohee</ThemedText>
+                <ThemedText style={styles.text} type="title">
+                    Welcome! Dohee 안녕 윤성아
+                </ThemedText>
                 <HelloWave />
             </ThemedView>
             <ThemedView style={styles.stepContainer}>
@@ -37,6 +48,18 @@ export default function HomeScreen() {
                     <ThemedText type="defaultSemiBold">app-example</ThemedText>.
                 </ThemedText>
             </ThemedView>
+            <ThemedView style={styles.box}>
+                <TextInput style={styles.input} placeholder="입력 해주세요" placeholderTextColor={"#ddd"} />
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                        console.log("여기를 클릭하세요!");
+                    }}>
+                    <ThemedText style={styles.buttonText}>Go to Contact</ThemedText>
+                </TouchableOpacity>
+                <Switch style={styles.switch} value={false} />
+                <Switch style={styles.switch} value={true} />
+            </ThemedView>
         </ParallaxScrollView>
     );
 }
@@ -52,10 +75,44 @@ const styles = StyleSheet.create({
         marginBottom: 8,
     },
     reactLogo: {
-        height: 178,
-        width: 290,
+        height: 250,
+        width: 400,
         bottom: 0,
         left: 0,
         position: "absolute",
+    },
+    text: {
+        fontSize: 22,
+        fontWeight: "bold",
+        color: "lightblue",
+    },
+    box: {
+        display: "flex",
+        width: "100%",
+        height: 700,
+    },
+    input: {
+        color: "white",
+        height: 40,
+        borderColor: "gray",
+        borderWidth: 1,
+    },
+    button: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 15,
+        width: "100%",
+        height: 52,
+        backgroundColor: "lightblue",
+        borderRadius: 8,
+    },
+    buttonText: {
+        color: "#000",
+        fontSize: 16,
+        fontWeight: "bold",
+    },
+    switch: {
+        marginTop: 20,
     },
 });
