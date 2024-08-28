@@ -2,7 +2,7 @@ import { StyleSheet, View, Image, Text } from "react-native";
 
 import { ThemedText } from "@/components/ThemedText";
 import React from "react";
-
+import StateWithFunctionalComponent from "@/StateWithFunctionalComponent";
 const Header = () => {
     return <ThemedText></ThemedText>;
 };
@@ -58,7 +58,7 @@ const FriendList = () => {
 
 const Profile = (props: any) => {
     return (
-        <View style={{ flexDirection: "row" }}>
+        <View>
             <Image
                 source={{ uri: props.uri }}
                 style={{
@@ -73,12 +73,8 @@ const Profile = (props: any) => {
 
 export default function HomeScreen() {
     return (
-        <View style={styles.box}>
-            <Header />
-            <MyProfile />
-            <Division />
-            <FriendSection />
-            <FriendList />
+        <View style={styles.container}>
+            <StateWithFunctionalComponent />
         </View>
     );
 }
