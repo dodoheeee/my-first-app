@@ -1,10 +1,19 @@
-import React, { useState } from "react";
-import { View, Text, Button, Switch, TextInput } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, Button, Switch, TextInput, ActivityIndicator } from "react-native";
 
 const Component = () => {
     const [count, setCount] = useState(0);
     const [isOn, setIsOn] = useState(false);
     const [text, setText] = useState("");
+    const [isRefreshing, setIsRefreshing] = useState(false);
+
+    useEffect(() => {
+        if (isRefreshing) {
+            setTimeout(() => {
+                setIsRefreshing(false);
+            }, 2000);
+        }
+    }, [isRefreshing]);
 
     return (
         <View style={{ justifyContent: "center", alignItems: "center", display: "flex", flexDirection: "column" }}>
@@ -23,6 +32,8 @@ const Component = () => {
                     color: "#4A5BF7",
                 }}
             />
+            <Button title="Refresh" onPress={() => setIsRefreshing(true)} />
+            <ActivityIndicator animating={isRefreshing} size="large" color="#4A5BF7" />
         </View>
     );
 };
