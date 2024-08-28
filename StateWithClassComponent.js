@@ -9,6 +9,14 @@ class Component extends React.Component {
         };
     }
 
+    componentDidMount() {
+        console.log("Component mounted");
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log("prevProps", prevProps);
+        console.log("prevState", prevState);
+    }
     render() {
         return (
             <View>
