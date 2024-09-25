@@ -2,6 +2,7 @@ import { StyleSheet, View, Image, Text } from "react-native";
 
 import { ThemedText } from "@/components/ThemedText";
 import React from "react";
+import CustomHook from "@/CustomHook";
 import StateWithFunctionalComponent from "@/StateWithFunctionalComponent";
 const Header = () => {
     return <ThemedText></ThemedText>;
@@ -74,7 +75,8 @@ const Profile = (props: any) => {
 export default function HomeScreen() {
     return (
         <View style={styles.container}>
-            <StateWithFunctionalComponent />
+            {/* <StateWithFunctionalComponent /> */}
+            <CustomHook />
         </View>
     );
 }
